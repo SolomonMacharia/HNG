@@ -26,7 +26,7 @@ let data = [
     current_day: weekDays[currentDay],
     utc_time: utc_time,
     track: "backend",
-    github_file_url: "https://github.com/SolomonMacharia/HNG/index.js",
+    github_file_url: "https://github.com/SolomonMacharia/HNG/blob/master/index.js",
     github_repo_url: "https://github.com/SolomonMacharia/HNG",
     statusCode: 200
   }
