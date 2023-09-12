@@ -22,7 +22,7 @@ const currentDay = date.getDay();
 
 let data = [
   {
-    slack_name: "solomon macharia",
+    slack_name: "solomon_macharia",
     current_day: weekDays[currentDay],
     utc_time: utc_time,
     track: "backend",
