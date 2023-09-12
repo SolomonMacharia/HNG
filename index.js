@@ -32,20 +32,24 @@ let data = [
   }
 ]
 
-console.log(data.slack_name);
-
   
-app.get('/api/slack_name/:name/track/:track', (req, res) => {
-        const name = req.params.name;
-        const track = req.params.track;
+app.get('/api', (req, res) => {
+    const slackName = req.query.slack_name;
+    const trackName = req.query.track;
         
-        console.log(`Paramter name ---- ${name} ----`)
-        console.log(`Paramter track ---- ${track} ----`)
-        if (name === data[0].slack_name && track === data[0].track ) {
-            res.status(200);
-            res.send(JSON.stringify(data));
-        }
+    console.log(`Paramter name ---- ${slackName} ----`)
+    console.log(`Paramter track ---- ${trackName} ----`)
     
+    if (!slackName || !trackName ) {
+        return res.status(400).json({ error: 'Both slack_name and track query parameters are required.' });
+    } else if (slackName !== data[0].slack_name) {
+        return res.status(404).json({error: `${slackName} Not Found!`})
+    } else if (trackName !== data[0].track) {
+        return res.status(404).json({error: `${trackName} Not Found!`})
+    } else {
+        res.status(200);
+        res.send(JSON.stringify(data))
+    }
    
 })
 
