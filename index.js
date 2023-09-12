@@ -22,7 +22,7 @@ const currentDay = date.getDay();
 
 let data = [
   {
-    slack_name: "solomon_macharia",
+    slack_name: "solomon macharia",
     current_day: weekDays[currentDay],
     utc_time: utc_time,
     track: "backend",
@@ -48,7 +48,7 @@ app.get('/api', (req, res) => {
         return res.status(404).json({error: `${trackName} Not Found!`})
     } else {
         res.status(200);
-        res.send(JSON.stringify(data))
+        res.send(JSON.stringify(data[0]))
     }
    
 })
