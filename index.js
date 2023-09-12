@@ -4,21 +4,14 @@ const app = express()
 
 const port = 8000;
 
-const date = new Date();
+const now = new Date();
 
-const year = date.getUTCFullYear();
-const month = date.getUTCMonth();
-const day = date.getUTCDay();
-const hours = date.getUTCHours();
-const minutes = date.getUTCMinutes();
-const seconds = date.getUTCSeconds();
-const milliseconds = date.getUTCMilliseconds();
-   
-const utc_time = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds}`;
+const utc_time = now.toISOString().slice(0, -5) + 'Z';
+console.log(utc_time);
 
 const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
-const currentDay = date.getDay();
+const currentDay = now.getDay();
 
 let data = [
   {
@@ -28,7 +21,7 @@ let data = [
     track: "backend",
     github_file_url: "https://github.com/SolomonMacharia/HNG/blob/master/index.js",
     github_repo_url: "https://github.com/SolomonMacharia/HNG",
-    statusCode: 200
+    statusCode: 200,
   }
 ]
 
@@ -48,6 +41,7 @@ app.get('/api', (req, res) => {
         return res.status(404).json({error: `${trackName} Not Found!`})
     } else {
         res.status(200);
+        res.set('content-type', 'application/json');
         res.send(JSON.stringify(data[0]))
     }
    
