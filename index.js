@@ -36,7 +36,6 @@ console.log(data.slack_name);
 
   
 app.get('/api/slack_name/:name/track/:track', (req, res) => {
-    try {
         const name = req.params.name;
         const track = req.params.track;
         
@@ -46,10 +45,6 @@ app.get('/api/slack_name/:name/track/:track', (req, res) => {
             res.status(200);
             res.send(JSON.stringify(data));
         }
-    } catch(error) {
-        res.status(404);
-        console.log('Not found', error);
-    }
     
    
 })
